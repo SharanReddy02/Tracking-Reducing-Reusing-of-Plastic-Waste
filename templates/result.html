@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block headblock %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<br> <br> <h2>The list of the preferred clusters, along with their quantitities is as follows: </h2>
+
+<div class="jumbotron" style>
+  {% if val %}
+     <h3>There are {{ val|length }} records:</h3>
+     <br>
+     <table class="table table-striped">
+      <tr>
+        <th><h2><b>Location</b></h2></th>
+        <th><h2><b>Amount</b></h2></th>
+        <th><h2><b>Distance [in km]</b></h2></th>
+      </tr>
+      {% for e in val %}
+        <tr>
+          {% for x in e %}
+            <td><h4>{{ x }}</h4></td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>    
+  {% else %}
+     There are no records in the system
+  {% endif %}
+
+  <a href="https://earth.google.com"><button type="button" class="btn btn-primary btn-success">Search</button></a></li>
+
+</div>
+
+{% endblock %}

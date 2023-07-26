@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap3 %}
+
+{% block headblock %}
+
+ <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+
+
+
+{% block content %}
+{% if error_message %}
+    <div class="error-message">{{ error_message }}</div>
+{% else %}
+<div class="container jumbotron">
+    <h2>Please fill the following information to accept waste for recycle!</h2>
+    <h3>We hope that all your demands are appropriately met.</h3>
+    <form method="POST" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <script>
+            function clickAlert() {
+              alert("Your inputs are processed..Redirecting to the results");
+            }
+          </script>
+        <input type="submit" onclick="clickAlert()" value="Submit" class="btn btn-success">
+    </form>
+</div>
+{% endif %}
+{% endblock %}
+
+
